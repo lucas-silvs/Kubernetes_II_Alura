@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-sc
+
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    volumeMounts:
+      - mountPath: /volume-dentro-do-container-storageClass
+        name: primeiro-pv-com-sc
+  volumes:
+    - name: primeiro-pv-com-sc
+      persistentVolumeClaim:
+        claimName: pvc-1
